@@ -20,7 +20,7 @@ grunt.loadNpmTasks('grunt-api-meta');
 ## The "api-meta" task
 
 ### Overview
-In your project's Gruntfile, add a section named `api_meta` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `api-meta` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
