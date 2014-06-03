@@ -1,42 +1,32 @@
 "use strict";
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+	grunt.registerMultiTask("api-meta", "Generates pretty documentation pages", function () {
+		var builder = require("api-meta/src/builder"),
+			options = this.options(),
+			files = this.files,
+			done = this.async();
 
-  grunt.registerMultiTask("api-meta", "Generates pretty documentation pages", function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: ".",
-      separator: ", "
-    });
+		buildNext();
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn("Source file "" + filepath + "" not found.");
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+		function buildNext () {
 
-      // Handle options.
-      src += options.punctuation;
+			if (files.length) {
+				build();
 
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
+			} else {
+				done();
+			}
+		}
 
-      // Print a success message.
-      grunt.log.writeln("File "" + f.dest + "" created.");
-    });
-  });
+		function build () {
+			var file = files.shift();
 
+			options.src = file.src;
+			options.output = file.dest;
+
+			builder(options, buildNext);
+		}
+	});
 };
