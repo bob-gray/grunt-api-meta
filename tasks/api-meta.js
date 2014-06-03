@@ -26,6 +26,8 @@ module.exports = function (grunt) {
 			options.src = file.src;
 			options.output = file.dest;
 
+			grunt.log.ok("Building API documentation @ "+ options.output);
+
 			builder(options, buildNext);
 		}
 	});
