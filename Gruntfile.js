@@ -2,47 +2,39 @@
 
 module.exports = function(grunt) {
 
-  grunt.initConfig({
-    jshint: {
-      all: [
-        "Gruntfile.js",
-        "tasks/*.js"
-      ],
-      options: {
-        jshintrc: ".jshintrc"
-      }
-    },
+	grunt.initConfig({
+		jshint: {
+			options: {
+				strict: true,
+				curly: true,
+				eqeqeq: true,
+				forin: true,
+				immed: true,
+				latedef: "nofunc",
+				newcap: true,
+				noarg: true,
+				node: true,
+				noempty: true,
+				nonew: true,
+				plusplus: true,
+				quotmark: true,
+				undef: true,
+				validthis: true,
+				maxparams: 3,
+				maxdepth: 2,
+				maxstatements: 5,
+				maxcomplexity: 5
+			},
+			all: {
+				src: [
+					"Gruntfile.js",
+					"tasks/*.js"
+				]
+			}
+		}
+	});
 
+	grunt.loadNpmTasks("grunt-contrib-jshint");
 
-    clean: {
-      tests: ["tmp"]
-    },
-
-
-    "api-meta": {
-      default_options: {
-        options: {
-        },
-        files: {
-          "tmp/default_options": ["test/fixtures/testing", "test/fixtures/123"]
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ": ",
-          punctuation: " !!!"
-        },
-        files: {
-          "tmp/custom_options": ["test/fixtures/testing", "test/fixtures/123"]
-        }
-      }
-    }
-
-  });
-
-  grunt.loadTasks("tasks");
-
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-
-  grunt.registerTask("default", ["jshint"]);
+	grunt.registerTask("default", ["jshint"]);
 };
