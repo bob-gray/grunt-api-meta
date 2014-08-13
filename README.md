@@ -24,7 +24,7 @@ In your project's Gruntfile, add a section named `api-meta` to the data object p
 
 ```js
 grunt.initConfig({
-  "api-meta": {
+  "api_meta": {
     options: {
       // Task-specific options go here.
     },
