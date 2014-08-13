@@ -1,7 +1,7 @@
 {
   "name": "grunt-api-meta",
   "description": "Generates pretty documentation pages",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/bob-gray/grunt-api-meta",
   "author": {
     "name": "Bob Gray",
