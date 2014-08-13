@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 
-	grunt.registerMultiTask("api-meta", "Generates pretty documentation pages", function () {
+	grunt.registerMultiTask("api_meta", "Generates pretty documentation pages", function () {
 		var builder = require("api-meta/src/builder"),
 			options = this.options(),
 			files = this.files,
